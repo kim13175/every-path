@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+@layer base {
+  h1 {
+    @apply text-3xl py-6 font-bold;
+  }
+  h2 {
+    @apply text-2xl py-4 font-bold;
+  }
+  h3 {
+    @apply text-xl py-2 font-bold;
+  }
+  :root {
+    font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
+
+    color: rgb(16, 173, 185);
+    background-color: white;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;  
+  }
+}
