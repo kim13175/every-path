@@ -1,0 +1,1 @@
+export const REPUBLIC_OF_KOREA_POSITION = [37.5665, 126.9780];
