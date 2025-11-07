@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const SearchBar = ({place, onSearch}) => {
+const SearchBar = ({place, onSearch, placeholder}) => {
     const [searchPlace, setSearchPlace] = useState(place);
 
     const handleSearch = (e) => {
@@ -13,7 +13,7 @@ const SearchBar = ({place, onSearch}) => {
         <div className="mx-36 border">
             <input
                 className="flex w-full black outline-0 p-4" 
-                placeholder="검색하고 싶은 지역을 입력하세요."
+                placeholder={placeholder}
                 value={searchPlace}
                 onChange={handleSearch} 
             />
