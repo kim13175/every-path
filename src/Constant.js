@@ -1,1 +1,6 @@
-export const REPUBLIC_OF_KOREA_POSITION = [37.5665, 126.9780];
+export const ERROR = {
+    REQUSET_FAILURE_API: "API 요청 실패 : ",
+    NOT_FIND_RESULT_INFORMATION: "검색 결과가 없습니다.",
+    NOT_PLACE_LOCATION: "위치 정보가 없는 장소입니다",
+    INCORRECT_STRING_ADDRESS: "정확하지 않은 주소입니다."
+}

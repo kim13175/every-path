@@ -25,3 +25,9 @@
     -moz-osx-font-smoothing: grayscale;  
   }
 }
+
+@layer components {
+  .hover-effect {
+    @apply hover:transition duration-200 cursor-pointer;
+  }
+}
