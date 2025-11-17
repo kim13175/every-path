@@ -1,12 +1,15 @@
 import { CONSTANT } from '#src/Constant';
+import { useState } from 'react';
 import { MapContainer, Marker, TileLayer } from 'react-leaflet';
 
 const CustomMap = ({from, to}) => {
+    const [zoom, setZoom] = useState(12)
+
     return (
         <div className="flex justify-center items-center m-8">
             <MapContainer 
                 center={CONSTANT.REPULIC_OF_KOREA} 
-                zoom={8} 
+                zoom={zoom} 
                 scrollWheelZoom={true}
                 style={{ height: "500px", width: "80%" }}
             >

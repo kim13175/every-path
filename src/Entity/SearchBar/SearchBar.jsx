@@ -91,13 +91,13 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
             </div>
 
             {loading && (
-                <div className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 p-3 text-center text-gray-500">
+                <div className="absolute z-1000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 p-3 text-center text-gray-500">
                     검색 중...
                 </div>
             )}
 
             {showSuggestions && !loading && suggestions.length > 0 && (
-                <ul className="absolute z-10 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 max-h-60 overflow-y-auto">
+                <ul className="absolute z-1000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 max-h-60 overflow-y-auto">
                     {suggestions.map((suggestion, index) => (
                         <li
                             key={suggestion.id}
