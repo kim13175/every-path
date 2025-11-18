@@ -50,10 +50,7 @@ class Location {
                 throw new Error(ERROR.NOT_FIND_RESULT_INFORMATION);
             }
 
-            return [
-                parseFloat(data.documents[0].y),
-                parseFloat(data.documents[0].x)
-            ];
+            return data.documents[0];
 
         } catch(error) {
             throw new Error(ERROR.INCORRECT_STRING_ADDRESS);

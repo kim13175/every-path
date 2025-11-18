@@ -6,8 +6,8 @@ import Location from "../Services/Location.js";
 export const MainPage = () => {
     const [fromRegion, setFromRegion] = useState("");
     const [toRegion, setToRegion] = useState("");
-    const [fromCoords, setFromCoords] = useState(null);
-    const [toCoords, setToCoords] = useState(null);
+    const [fromInfo, setFromInfo] = useState(null);
+    const [toInfo, setToInfo] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const locationService = useRef(new Location()).current;
@@ -17,11 +17,11 @@ export const MainPage = () => {
             try {
                 if (fromRegion) {
                     const fromResult = await locationService.getCoordinate(fromRegion);
-                    setFromCoords(fromResult);
+                    setFromInfo(fromResult);
                 }
                 if (toRegion) {
                     const toResult = await locationService.getCoordinate(toRegion);
-                    setToCoords(toResult);
+                    setToInfo(toResult);
                 }
             } catch (err) {
                 console.error("좌표 변환 실패:", err);
@@ -34,11 +34,6 @@ export const MainPage = () => {
             fetchCoordinates();
         }
     }, [fromRegion, toRegion]);
-
-    useEffect(() => {
-        console.log(fromCoords)
-        console.log(toCoords)
-    }, [fromCoords, toCoords])
 
     return (
         <>
@@ -60,8 +55,8 @@ export const MainPage = () => {
 
             {loading && <p>좌표를 가져오는 중...</p>}
             <CustomMap 
-                from={fromCoords} 
-                to={toCoords}
+                from={fromInfo} 
+                to={toInfo}
             />
         </>
     );
