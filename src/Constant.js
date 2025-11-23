@@ -7,7 +7,7 @@ export const ERROR = {
 }
 
 export const CONSTANT = {
-    REPULIC_OF_KOREA : [35.1379222, 129.05562775]
+    REPULIC_OF_KOREA_BUSAN : [35.1379222, 129.05562775]
 }
 
 export const MESSAGE = {

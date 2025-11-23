@@ -1,17 +1,55 @@
 import { CONSTANT, ERROR } from '#src/Constant';
 import Route from '#src/Services/Route';
-import { useState } from 'react';
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet';
+import { useEffect, useState } from 'react';
+import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import Legend from './Legend';
 
+const ChangeScale = ({center, zoom}) => {
+    const map = useMap();
+
+    useEffect(() => {
+        if (center) { 
+            map.setView(center, zoom);
+        }
+    }, [center, zoom, map]);
+
+    return null;
+}
+
 const CustomMap = ({from, to}) => {
-    const [zoom, setZoom] = useState(12);
     const [routeInfo, setRouteInfo] = useState(null);
+    const [zoom, setZoom] = useState(12);
+    const [center, setCenter] = useState(CONSTANT.REPULIC_OF_KOREA_BUSAN);
     /* 지번 주소와 도로명 주소 중 도로명 주소 사용 */ 
     const fromRoad = from?.road_address;
     const toRoad = to?.road_address;
     const fromCoord = fromRoad?.x && fromRoad?.y ? [fromRoad.y, fromRoad.x] : null;
     const toCoord = toRoad?.x && toRoad?.y ? [toRoad.y, toRoad.x] : null;
+
+    useEffect(() => {
+        if (fromRoad?.x && fromRoad?.y && !toRoad?.x) {
+            setCenter([fromRoad.y, fromRoad.x]);
+        } else if (toRoad?.x && toRoad?.y) {
+            setCenter([toRoad.y, toRoad.x]);
+        }
+    }, [fromRoad?.x, fromRoad?.y, toRoad?.x, toRoad?.y]);
+
+    useEffect(() => {
+        if (routeInfo?.distance && fromCoord && toCoord) {
+            const midPoint = [
+                (parseFloat(fromCoord[0]) + parseFloat(toCoord[0])) / 2,
+                (parseFloat(fromCoord[1]) + parseFloat(toCoord[1])) / 2
+            ];
+            setCenter(midPoint);
+
+            const zoomRate = routeInfo.distance / 100;
+            if (zoomRate < 1) {
+                setZoom(10 + Math.floor(zoomRate));
+            } else {
+                setZoom(10 - Math.floor(zoomRate));
+            }
+        }
+    }, [routeInfo]);
 
     const handleSubmit = async () => {
         if (!fromCoord || !toCoord) {
@@ -35,11 +73,15 @@ const CustomMap = ({from, to}) => {
                 위치 찾기
             </button>
             <MapContainer 
-                center={CONSTANT.REPULIC_OF_KOREA} 
+                center={center} 
                 zoom={zoom} 
                 scrollWheelZoom={true}
                 style={{ height: "500px", width: "100%" }}
             >
+                <ChangeScale
+                    center={center}
+                    zoom={zoom}
+                />
                 <TileLayer
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
