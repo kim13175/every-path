@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import CustomMap from "../Entity/Map/CustomMap";
 import SearchBar from "../Entity/SearchBar/SearchBar";
-import Location from "../Services/Location.js"; 
+import Location from "../Services/Location.js";
 
 export const MainPage = () => {
     const [fromRegion, setFromRegion] = useState("");
@@ -14,6 +14,7 @@ export const MainPage = () => {
 
     useEffect(() => {
         const fetchCoordinates = async () => {
+            setLoading(true)
             try {
                 if (fromRegion) {
                     const fromResult = await locationService.getCoordinate(fromRegion);
@@ -54,7 +55,7 @@ export const MainPage = () => {
             </div>
 
             {loading && <p>좌표를 가져오는 중...</p>}
-            <CustomMap 
+            <CustomMap
                 from={fromInfo} 
                 to={toInfo}
             />
