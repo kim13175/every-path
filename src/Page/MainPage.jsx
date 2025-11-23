@@ -41,17 +41,20 @@ export const MainPage = () => {
             <div className="bg-gray-600 p-4 mb-12">
                 <h2>Every path</h2>
             </div>
-            <div className="w-full flex flex-row gap-4 px-8">
-                <SearchBar 
-                    placeholder={"출발지를 입력하세요."}
-                    place={fromRegion}
-                    onSearch={setFromRegion} 
-                />
-                <SearchBar 
-                    placeholder={"도착지를 입력하세요."} 
-                    place={toRegion}
-                    onSearch={setToRegion}
-                />
+            <div className="w-full flex flex-col gap-4 px-8">
+                <p className="text-gray-600">📢 출발지와 도착지를 입력하시면 거리와 소요시간의 지도의 오른쪽 위에 표시됩니다</p>
+                <div className="flex flex-row gap-4">
+                    <SearchBar 
+                        placeholder={"출발지를 입력하세요."}
+                        place={fromRegion}
+                        onSearch={setFromRegion} 
+                    />
+                    <SearchBar 
+                        placeholder={"도착지를 입력하세요."} 
+                        place={toRegion}
+                        onSearch={setToRegion}
+                    />
+                </div>
             </div>
 
             {loading && <p>좌표를 가져오는 중...</p>}
