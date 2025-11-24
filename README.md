@@ -27,22 +27,22 @@ REST API DOCS : https://developers.kakao.com/docs/latest/ko/local/dev-guide
 
 카카오 API의 경우 REST API 키를 발급 받고 `KakaoAK ${my_rest_api_token_key}`를 헤더에 추가해야 하며 이는 로컬 API와 길찾기 API 모두 동일한 인증 헤더를 추가해야 하였습니다. 
 
-![DOCS API 요청 정보](image.png) 
+![DOCS API 요청 정보](./public/image.png) 
 
 또한, 검색한 위치 정보를 좌표로 변환해야 Leaflet의 마커로 체크 할 수 있는데 이를 위하여 로컬 API를 추가적으로 사용하여 위 검색한 장소에 따른 위경도 좌표를 얻을 수 있었습니다.
 
-![alt text](image-2.png)
+![alt text](./public/image-2.png)
 출처 : https://developers.kakao.com/docs/latest/ko/local/dev-guide
 
 응답에서 오는 데이터들을 JSON 형태로 확인할 수 있었으며 JSON 형태의 응답구조를 통해 필요한 데이터들을 추출하여 렌더링할 수 있었습니다.
 
-![alt text](image-3.png)
+![alt text](./public/image-3.png)
 
 ### React-Leaflet
 
 Leaflet 라이브러리를 통해 아래의 이미지와 같이 맵의 확대 비율과 위치를 동적으로 조정할 수 있도록 지원하여 검색어에 입력된 지점으로 위치를 이동과 거리에 따른 확대율 조정을 할 수 있었습니다.
 
-![alt text](image-4.png)
+![alt text](./public/image-4.png)
 출처: https://react-leaflet.js.org/docs/example-animated-panning/
 
 
