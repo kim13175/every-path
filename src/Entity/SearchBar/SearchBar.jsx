@@ -72,16 +72,16 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
 
     return (
         <div className="relative w-full" ref={wrapperRef}>
-            <div className="flex flex-col gap-2">
+            <div className="w-full outline-0 border rounded-lg focus:border-blue-400">
                 <input
-                    className="w-full black outline-0 p-4 border rounded-lg focus:border-blue-400" 
+                    className="w-105 p-4 outline-0" 
                     placeholder={placeholder}
                     value={searchPlace}
                     onChange={handleInputChange}
                 />
-                <div className="flex justify-end">
+                <div className="absolute top-2 right-2 flex justify-end">
                     <button 
-                        className="flex justify-center w-20 p-2 bg-blue-400 text-white font-bold rounded-lg hover:bg-blue-600 hover-effect"
+                        className="flex justify-center w-18 p-2 bg-blue-400 text-white font-bold rounded-lg hover:bg-blue-600 hover-effect"
                         onClick={handleSearchSubmit}
                         disabled={completeSearch}
                     >
