@@ -65,9 +65,9 @@ const CustomMap = ({from, to}) => {
     }
 
     return (
-        <div className="relative flex flex-col justify-center items-center m-8">
+        <div className="h-120 relative flex flex-col justify-center items-center mx-8 px-24">
             <button
-                className="w-full m-4 p-4 bg-blue-400 font-bold text-white rounded-lg hover:bg-blue-600" 
+                className="w-full m-4 p-4 bg-blue-400 font-bold text-white rounded-lg hover:bg-blue-600 hover-effect" 
                 type="submit" 
                 onClick={handleSubmit}>
                 위치 찾기
