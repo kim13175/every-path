@@ -29,7 +29,6 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
             setSuggestions([]);
             return;
         }
-        /* 검색어 디바운싱 */
         const delayTimer = setTimeout(async () => {
             setLoading(true);
             try {
@@ -42,7 +41,7 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
             } finally {
                 setLoading(false);
             }
-        }, 300);
+        }, 200);
 
         return () => clearTimeout(delayTimer);
     }, [searchPlace]);
@@ -91,13 +90,13 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
             </div>
 
             {loading && (
-                <div className="absolute z-3000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 p-3 text-center text-gray-500">
+                <div className="absolute z-6000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 p-3 text-center text-gray-500">
                     검색 중...
                 </div>
             )}
 
             {showSuggestions && !loading && suggestions.length > 0 && (
-                <ul className="absolute z-3000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 max-h-60 overflow-y-auto">
+                <ul className="absolute z-6000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 max-h-60 overflow-y-auto">
                     {suggestions.map((suggestion, index) => (
                         <li
                             key={suggestion.id}
