@@ -29,7 +29,6 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
             setSuggestions([]);
             return;
         }
-        /* 검색어 디바운싱 */
         const delayTimer = setTimeout(async () => {
             setLoading(true);
             try {
@@ -42,7 +41,7 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
             } finally {
                 setLoading(false);
             }
-        }, 300);
+        }, 200);
 
         return () => clearTimeout(delayTimer);
     }, [searchPlace]);
@@ -72,16 +71,16 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
 
     return (
         <div className="relative w-full" ref={wrapperRef}>
-            <div className="flex flex-col gap-2">
+            <div className="w-full outline-0 border rounded-lg focus:border-blue-400">
                 <input
-                    className="w-full black outline-0 p-4 border rounded-lg focus:border-blue-400" 
+                    className="w-105 p-4 outline-0" 
                     placeholder={placeholder}
                     value={searchPlace}
                     onChange={handleInputChange}
                 />
-                <div className="flex justify-end">
+                <div className="absolute top-2 right-2 flex justify-end">
                     <button 
-                        className="flex justify-center w-20 p-2 bg-blue-400 text-white font-bold rounded-lg hover:bg-blue-600 hover-effect"
+                        className="flex justify-center w-18 p-2 bg-blue-400 text-white font-bold rounded-lg hover:bg-blue-600 hover-effect"
                         onClick={handleSearchSubmit}
                         disabled={completeSearch}
                     >
@@ -91,13 +90,13 @@ const SearchBar = ({ placeholder, place, onSearch }) => {
             </div>
 
             {loading && (
-                <div className="absolute z-3000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 p-3 text-center text-gray-500">
+                <div className="absolute z-6000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 p-3 text-center text-gray-500">
                     검색 중...
                 </div>
             )}
 
             {showSuggestions && !loading && suggestions.length > 0 && (
-                <ul className="absolute z-3000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 max-h-60 overflow-y-auto">
+                <ul className="absolute z-6000 w-full bg-white border border-gray-300 rounded-lg shadow-lg mt-1 max-h-60 overflow-y-auto">
                     {suggestions.map((suggestion, index) => (
                         <li
                             key={suggestion.id}
