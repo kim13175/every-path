@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
 import Legend from './Legend';
 
-const ChangeScale = ({center, zoom}) => {
+const ChangeCenter = ({center, zoom}) => {
     const map = useMap();
 
     useEffect(() => {
@@ -44,9 +44,9 @@ const CustomMap = ({from, to}) => {
 
             const zoomRate = routeInfo.distance / 100;
             if (zoomRate < 1) {
-                setZoom(10 + Math.floor(zoomRate));
+                setZoom(12 - Math.floor(zoomRate));
             } else {
-                setZoom(10 - Math.floor(zoomRate));
+                setZoom(12 + Math.floor(zoomRate));
             }
         }
     }, [routeInfo]);
@@ -78,7 +78,7 @@ const CustomMap = ({from, to}) => {
                 scrollWheelZoom={true}
                 style={{ height: "500px", width: "100%" }}
             >
-                <ChangeScale
+                <ChangeCenter
                     center={center}
                     zoom={zoom}
                 />
@@ -104,7 +104,7 @@ const CustomMap = ({from, to}) => {
                 )}
             </MapContainer>
             {routeInfo && (
-                <div className="absolute right-5 top-25 z-3000">
+                <div className="absolute right-28 top-25 z-3000">
                     <Legend distance={routeInfo.distance} duration={routeInfo.duration} />
                 </div>
             )}
