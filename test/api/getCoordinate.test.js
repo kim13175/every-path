@@ -1,5 +1,5 @@
 import { describe, test, expect, beforeEach, vi } from 'vitest'
-import Location, { getCoordinates } from '../../src/Services/Location.js'
+import Location from '../../src/Services/Location.js'
 
 global.fetch = vi.fn()
 
